@@ -124,7 +124,7 @@ final class JazzyLinter extends ArcanistLinter {
     list($stdout) = execx('swift --version');
 
     $matches = array();
-    $regex = '/version (?P<version>\d+\.\d+\.\d+)/';
+    $regex = '/version (?P<version>\d+\.\d+(?:\.\d)?+)/';
     if (preg_match($regex, $stdout, $matches)) {
       $this->swiftVersion = $matches['version'];
     } else {
