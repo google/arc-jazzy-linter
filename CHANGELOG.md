@@ -1,6 +1,7 @@
-# release-candidate
+# 1.1.0
 
- TODO: Enumerate changes.
+- Add support for Swift 3.
+
 # 1.0.2
 
 - Resolved a bug in which the first linted file would not generate any linter warnings.
