@@ -157,13 +157,23 @@ final class JazzyLinter extends ArcanistLinter {
 
     $tmpdir = trim($tmp_stdout);
 
-    // Generate the report.
-    $future = new ExecFuture('%C --skip-documentation --output="%C" --config="%C" --swift-version="%C"',
-      $this->getDefaultBinary(),
-      $tmpdir,
-      $jazzyConfigPath,
-      $this->getSwiftVersion()
-    );
+    $swiftVersion = $this->getSwiftVersion();
+
+    if (intval($swiftVersion) >= 3) {
+      $future = new ExecFuture('%C --skip-documentation --output="%C" --config="%C"',
+        $this->getDefaultBinary(),
+        $tmpdir,
+        $jazzyConfigPath
+      );
+    } else {
+      $future = new ExecFuture('%C --skip-documentation --output="%C" --config="%C" --swift-version="%C"',
+        $this->getDefaultBinary(),
+        $tmpdir,
+        $jazzyConfigPath,
+        $swiftVersion
+      );
+    }
+
     list($jazzyerror, $jazzy_stdout, $jazzy_stderr) = $future->resolve();
 
     if ($jazzyerror != 0) {
