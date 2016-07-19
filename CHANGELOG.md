@@ -1,3 +1,6 @@
+# release-candidate
+
+ TODO: Enumerate changes.
 # 1.0.2
 
 - Resolved a bug in which the first linted file would not generate any linter warnings.
