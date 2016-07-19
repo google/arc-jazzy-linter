@@ -184,6 +184,8 @@ final class JazzyLinter extends ArcanistLinter {
     }
 
     $this->lintReports[$jazzyConfigPath] = $report;
+
+    return $this->lintReports[$jazzyConfigPath];
   }
 
   public function lintPath($path) {
